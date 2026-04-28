@@ -1,8 +1,10 @@
 package org.example.views;
 
-import org.example.models.Transaction;
 import org.example.models.TransactionsRepository;
 import org.example.utils.UI;
+import org.example.views.home.DepositView;
+import org.example.views.home.PaymentView;
+import org.example.views.ledger.LegderView;
 
 public class HomeView {
     static boolean isLooping = true;

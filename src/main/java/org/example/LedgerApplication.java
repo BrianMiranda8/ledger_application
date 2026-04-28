@@ -13,11 +13,11 @@ import java.time.LocalTime;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class LedgerApplication {
     static void main() {
-        Ledger ledger = new Ledger(new TransactionsRepository());
-
-        for (Transaction transaction : ledger.previousMonth()){
-            IO.println(transaction);
-        }
+//        Ledger ledger = new Ledger(new TransactionsRepository());
+//
+//        for (Transaction transaction : ledger.yearToDate()){
+//            IO.println(transaction);
+//        }
 
         HomeView.view();
     }
