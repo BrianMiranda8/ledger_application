@@ -25,7 +25,7 @@ public class TransactionsRepository {
     public void addTransaction(Transaction transaction) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILENAME, true))) {
 
-            bufferedWriter.write(transaction.toString());
+            bufferedWriter.write("\n"+transaction.toString());
 
         } catch (Exception e) {
             IO.println("Error occurred while saving transaction" + e);
