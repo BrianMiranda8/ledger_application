@@ -9,15 +9,9 @@ import org.example.views.HomeView;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class LedgerApplication {
     static void main() {
-//        Ledger ledger = new Ledger(new TransactionsRepository());
-//
-//        for (Transaction transaction : ledger.yearToDate()){
-//            IO.println(transaction);
-//        }
 
         HomeView.view();
     }

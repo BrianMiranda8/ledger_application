@@ -2,11 +2,13 @@ package org.example.models;
 
 import org.example.enums.PaymentType;
 
-import java.lang.reflect.Array;
+import java.sql.Array;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Ledger {
     // this would have an interface but for today ill use a direct class assignment
@@ -86,7 +88,9 @@ public class Ledger {
             }
         }
 
-        return mtdTransactions;
+        return (ArrayList<Transaction>)mtdTransactions.stream()
+                .sorted(Comparator.comparing(Transaction::getDate).reversed())
+                .toList();
     }
 
     public void addTransaction(PaymentType paymentType, Transaction transaction) throws Exception {
@@ -100,7 +104,7 @@ public class Ledger {
             case PAYMENT -> {
                 if (transaction.getAmount() > 0) {
                     transaction.setAmount(-transaction.getAmount());
-                }else{
+                } else {
                     transaction.setAmount(transaction.getAmount());
                 }
             }
@@ -110,8 +114,31 @@ public class Ledger {
 
     }
 
-    public ArrayList<Transaction> viewTransactions(){
-        return (ArrayList<Transaction>)this.repository.viewTransactions();
+    public List<Transaction> viewTransactions() {
+
+        // the stream creates a funnel for your items in a list
+        Stream<Transaction> stream = repository.viewTransactions().stream();
+
+        // then they are passed into an intermediate operation -> meaning some action is performed on the items
+        // the sorted method can take a comparator which is factory that asks what are we comparing
+        // im comparing the transactions on their date i then flip the sort to be from highest to lowest
+        Stream<Transaction > sorted = stream.sorted(Comparator.comparing(Transaction::getDate).reversed());
+
+        return   sorted.collect(Collectors.toList());
+    }
+
+
+    // todo: not working shows all payments
+    public List<Transaction> viewDeposits(){
+        return   this.viewTransactions().stream()
+                .filter((t) -> t.getAmount() >= 0)
+                .toList();
+    }
+
+    public List<Transaction> viewPayments(){
+        return  this.viewTransactions().stream()
+                .filter((t)-> t.getAmount() < 0)
+                .toList();
     }
 
 

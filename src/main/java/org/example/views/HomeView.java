@@ -1,5 +1,6 @@
 package org.example.views;
 
+import org.example.models.Ledger;
 import org.example.models.TransactionsRepository;
 import org.example.utils.UI;
 import org.example.views.home.DepositView;
@@ -9,7 +10,7 @@ import org.example.views.ledger.LegderView;
 public class HomeView {
     static boolean isLooping = true;
     public static void view(){
-
+        Ledger ledger = new Ledger(new TransactionsRepository());
 
         while (isLooping) {
             IO.println("Ledger Application");
@@ -23,14 +24,20 @@ public class HomeView {
             String userInput = UI.getUserInput().toLowerCase();
 
             switch (userInput){
-                case "d" -> DepositView.view();
-                case "p" -> PaymentView.view();
-                case "l" -> LegderView.view();
+                case "d" -> DepositView.view(ledger);
+                case "p" -> PaymentView.view(ledger);
+                case "l" -> LegderView.view(ledger);
+                case "x"-> exitProgram();
             }
         }
 
 //        switch (userInput)
 
     }
+
+    private static void exitProgram() {
+        isLooping = false;
+    }
+
 
 }
