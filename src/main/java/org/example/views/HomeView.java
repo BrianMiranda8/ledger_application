@@ -2,6 +2,7 @@ package org.example.views;
 
 import org.example.models.Ledger;
 import org.example.models.TransactionsRepository;
+import org.example.utils.MessageColor;
 import org.example.utils.UI;
 import org.example.views.home.DepositView;
 import org.example.views.home.PaymentView;
@@ -13,8 +14,7 @@ public class HomeView {
         Ledger ledger = new Ledger(new TransactionsRepository());
 
         while (isLooping) {
-            IO.println("Ledger Application");
-            IO.println("Options ....");
+            IO.println(MessageColor.RED + "Ledger Application" + MessageColor.RESET);
             TransactionsRepository transactionsRepository = new TransactionsRepository();
             IO.println("D) Add Deposit \n" +
                     "P) Make Payment \n" +

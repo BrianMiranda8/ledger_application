@@ -1,7 +1,7 @@
 package org.example.views.reports;
 
 import org.example.models.Ledger;
-import org.example.utils.MesageColor;
+import org.example.utils.MessageColor;
 import org.example.utils.UI;
 
 public class ReportsView {
@@ -9,15 +9,16 @@ public class ReportsView {
         boolean isLooping = true;
 
         while (isLooping){
-            IO.println(MesageColor.GREEN + "View Reports");
-            IO.println( "   1) Month To Date \n" +
+            IO.println(MessageColor.GREEN + "View Reports");
+            IO.println(
+                    "   1) Month To Date \n" +
                     "   2) Previous Month \n" +
                     "   3) Year To Date \n" +
                     "   4) Previous Year \n " +
-                    "  5) Search By Vendor \n" +
-                    "  6) Custom Search \n" +
+                    "   5) Search By Vendor \n" +
+                    "   6) Custom Search \n" +
                     "   0) Back" );
-            IO.print("Enter Selection:  " + MesageColor.RESET);
+            IO.print("Enter Selection:  " + MessageColor.RESET);
           String userInput =   UI.getUserInput();
             switch (userInput){
                 case "1"  -> {
@@ -33,7 +34,10 @@ public class ReportsView {
                     UI.displayFormattedTable(ledger.previousYear());
                 }
                 case "5" ->{
-                    SearchByVenderView.view();
+                    SearchByVenderView.view(ledger);
+                }
+                case "6"->{
+                    CustomSearchView.view(ledger);
                 }
 
                 default ->  {

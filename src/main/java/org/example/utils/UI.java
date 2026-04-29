@@ -20,7 +20,7 @@ public class UI {
 
             Transaction transaction = transactions.get(TransactionsPage);
 
-            String backgroundColor = changeColor ? MesageColor.BLACK_BG : MesageColor.WHITE_BG;
+            String backgroundColor = changeColor ? MessageColor.BLACK_BG : MessageColor.WHITE_BG;
 
             if (TransactionsPage != 0 && TransactionsPage % 10 == 0) {
                 IO.println("Press Enter To Continue...");
@@ -28,7 +28,7 @@ public class UI {
 
             }
 
-            IO.println(backgroundColor + transaction.prettyString() + MesageColor.RESET);
+            IO.println(backgroundColor + transaction.prettyString() + MessageColor.RESET);
 
             TransactionsPage++;
             changeColor = !changeColor;

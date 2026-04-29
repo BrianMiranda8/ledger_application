@@ -2,11 +2,8 @@ package org.example.views.ledger;
 
 import org.example.models.Ledger;
 import org.example.models.Transaction;
-import org.example.models.TransactionsRepository;
-import org.example.utils.MesageColor;
 import org.example.utils.UI;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

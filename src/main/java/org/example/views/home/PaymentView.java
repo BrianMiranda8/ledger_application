@@ -3,8 +3,7 @@ package org.example.views.home;
 import org.example.enums.PaymentType;
 import org.example.models.Ledger;
 import org.example.models.Transaction;
-import org.example.models.TransactionsRepository;
-import org.example.utils.MesageColor;
+import org.example.utils.MessageColor;
 import org.example.utils.UI;
 
 import java.time.LocalDate;
@@ -42,9 +41,9 @@ public class PaymentView {
                 exitProgram(userAmount);
                 ledger.addTransaction(PaymentType.PAYMENT, new Transaction(userDate,time,userDescription,userVendor,Double.parseDouble(userAmount)));
 
-                IO.println(MesageColor.BLACK_BG + "Deposit Entered" + MesageColor.RESET);
+                IO.println(MessageColor.BLACK_BG + "Deposit Entered" + MessageColor.RESET);
             } catch (Exception e) {
-                IO.println(MesageColor.BLACK_BG+ MesageColor.RED +"Error your deposit was not added"+MesageColor.RESET);
+                IO.println(MessageColor.BLACK_BG+ MessageColor.RED +"Error your deposit was not added"+ MessageColor.RESET);
             }
         }
 

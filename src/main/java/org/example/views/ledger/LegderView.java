@@ -1,8 +1,7 @@
 package org.example.views.ledger;
 
 import org.example.models.Ledger;
-import org.example.models.TransactionsRepository;
-import org.example.utils.MesageColor;
+import org.example.utils.MessageColor;
 import org.example.utils.UI;
 import org.example.views.reports.ReportsView;
 
@@ -14,12 +13,12 @@ public class LegderView {
 
         while (isLooping) {
             IO.println("Ledger View");
-            IO.println(MesageColor.BLUE +
+            IO.println(MessageColor.BLUE +
                     "     A) View All Transactions \n" +
                     "     D) View Deposits \n" +
                     "     P) View Payments \n" +
                     "     R) Reports \n" +
-                    "     H) Home" + MesageColor.RESET);
+                    "     H) Home" + MessageColor.RESET);
             IO.print("Enter Selection: ");
             String userInput = UI.getUserInput().toLowerCase();
             switch (userInput) {

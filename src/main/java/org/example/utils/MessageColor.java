@@ -1,6 +1,6 @@
 package org.example.utils;
 
-public class MesageColor {
+public class MessageColor {
     // Reset code
     public static final String RESET = "\u001B[0m";
 
