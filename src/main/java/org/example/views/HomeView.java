@@ -14,15 +14,24 @@ public class HomeView {
         Ledger ledger = new Ledger(new TransactionsRepository());
 
         while (isLooping) {
-            IO.println(MessageColor.RED + "Ledger Application" + MessageColor.RESET);
-            TransactionsRepository transactionsRepository = new TransactionsRepository();
-            IO.println("D) Add Deposit \n" +
-                    "P) Make Payment \n" +
-                    "L) View Ledger \n" +
-                    "X) Exit");
+            IO.println(MessageColor.PURPLE);
+            System.out.println("  _               _      ");
+            System.out.println(" | |             | |                     ");
+            System.out.println(" | |     ___   __| | __ _  ___ _ __     ");
+            System.out.println(" | |    / _ \\ / _` |/ _` |/ _ \\ '__|   ");
+            System.out.println(" | |___|  __/| (_| | (_| |  __/ |     ");
+            System.out.println(" |______\\___| \\__,_|\\__, |\\___|_|     ");
+            System.out.println("                     __/ |     ");
+            System.out.println("                    |___/      ");
+            IO.println(MessageColor.RESET);
+            IO.println(MessageColor.PURPLE + "D) Add Deposit" + MessageColor.RESET);
+            IO.println(MessageColor.GREEN + "P) Make Payment" + MessageColor.RESET);
+            IO.println(MessageColor.BLUE + "L) View Ledger" + MessageColor.RESET);
+            IO.println(MessageColor.RED + "X) Exit" + MessageColor.RESET);
             IO.print("Make Selection: ");
-            String userInput = UI.getUserInput().toLowerCase();
 
+            String userInput = UI.getUserInput().toLowerCase();
+            IO.println();
             switch (userInput){
                 case "d" -> DepositView.view(ledger);
                 case "p" -> PaymentView.view(ledger);

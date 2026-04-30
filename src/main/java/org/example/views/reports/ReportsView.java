@@ -15,7 +15,7 @@ public class ReportsView {
                     "   2) Previous Month \n" +
                     "   3) Year To Date \n" +
                     "   4) Previous Year \n " +
-                    "   5) Search By Vendor \n" +
+                    "  5) Search By Vendor \n" +
                     "   6) Custom Search \n" +
                     "   0) Back" );
             IO.print("Enter Selection:  " + MessageColor.RESET);

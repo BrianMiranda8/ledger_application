@@ -19,39 +19,36 @@ public class Ledger {
         this.repository = repository;
     }
 
-    public ArrayList<Transaction> monthToDate() {
+    public List<Transaction> monthToDate() {
         // month to date transactions
-        ArrayList<Transaction> mtdTransactions;
+
         LocalDate today = LocalDate.now();
         LocalDate firstOfMonth = LocalDate.now().withDayOfMonth(1);
 
-        mtdTransactions = searchByDate(firstOfMonth, today);
+       return    searchByDate(firstOfMonth, today);
 
-        return mtdTransactions;
     }
 
-    public ArrayList<Transaction> previousMonth() {
-        ArrayList<Transaction> pmTransactions;
+    public List<Transaction> previousMonth() {
         LocalDate startOfMonth = LocalDate.now().minusMonths(1).withDayOfMonth(1);
-
         LocalDate endOfMonth = LocalDate.now().minusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
-        pmTransactions = searchByDate(startOfMonth, endOfMonth);
+        return   searchByDate(startOfMonth, endOfMonth);
 
-        return pmTransactions;
+
     }
 
-    public ArrayList<Transaction> yearToDate() {
+    public List<Transaction> yearToDate() {
         LocalDate startDate = LocalDate.now().with(TemporalAdjusters.firstDayOfYear());
         LocalDate endDate = LocalDate.now();
 
         return searchByDate(startDate, endDate);
     }
 
-    public ArrayList<Transaction> previousYear() {
+    public List<Transaction> previousYear() {
         LocalDate startDate = LocalDate.now().minusYears(1).with(TemporalAdjusters.firstDayOfYear());
         LocalDate endDate = LocalDate.now().minusYears(1).with(TemporalAdjusters.lastDayOfYear());
 
-        return searchByDate(startDate, endDate);
+        return  searchByDate(startDate, endDate);
 
     }
 
@@ -73,7 +70,7 @@ public class Ledger {
      * @param startDate
      * @param endDate
      */
-    public ArrayList<Transaction> searchByDate(LocalDate startDate, LocalDate endDate) {
+    public List<Transaction> searchByDate(LocalDate startDate, LocalDate endDate) {
 
 
         ArrayList<Transaction> mtdTransactions = new ArrayList<>();
@@ -88,7 +85,7 @@ public class Ledger {
             }
         }
 
-        return (ArrayList<Transaction>)mtdTransactions.stream()
+        return mtdTransactions.stream()
                 .sorted(Comparator.comparing(Transaction::getDate).reversed())
                 .toList();
     }

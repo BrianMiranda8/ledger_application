@@ -23,8 +23,13 @@ public class UI {
             String backgroundColor = changeColor ? MessageColor.BLACK_BG : MessageColor.WHITE_BG;
 
             if (TransactionsPage != 0 && TransactionsPage % 10 == 0) {
-                IO.println("Press Enter To Continue...");
-                UI.getUserInput();
+                IO.println("Press Enter To Continue OR exit to quit...");
+               String userInput = UI.getUserInput();
+
+               if (userInput.equalsIgnoreCase("exit")){
+                   TransactionsPage = transactions.size();
+                   continue;
+               }
 
             }
 

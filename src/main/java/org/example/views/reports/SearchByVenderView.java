@@ -13,7 +13,9 @@ public class SearchByVenderView {
             if (userInput.contains("exit")){
                 isLooping = false;
             }
-            ledger.byVendor(userInput).forEach(t -> IO.println(t.prettyString()));
+//            ledger.byVendor(userInput).forEach(t -> IO.println(t.prettyString()));
+
+            UI.displayFormattedTable(ledger.byVendor(userInput));
         }
 
 

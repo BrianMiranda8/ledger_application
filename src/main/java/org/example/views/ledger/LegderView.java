@@ -12,8 +12,9 @@ public class LegderView {
          boolean isLooping = true;
 
         while (isLooping) {
-            IO.println("Ledger View");
-            IO.println(MessageColor.BLUE +
+            IO.println(MessageColor.BLUE);
+            IO.println("     Ledger View");
+            IO.println(
                     "     A) View All Transactions \n" +
                     "     D) View Deposits \n" +
                     "     P) View Payments \n" +

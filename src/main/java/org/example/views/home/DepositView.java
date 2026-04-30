@@ -13,43 +13,56 @@ import java.time.format.DateTimeFormatter;
 public class DepositView    {
     static boolean isLooping = true;
     public static void view(Ledger ledger) {
-        IO.println("Adding new Deposit");
-
 
         while(isLooping){
             try{
+                IO.println(MessageColor.PURPLE);
+                IO.println("Add new Deposit");
+
                 IO.println("Enter 'Exit' to quit");
                 IO.println("Enter Date Format yyyy-mm-dd");
                 IO.print("Enter Date : ");
                 String userDateInput = UI.getUserInput();
-                exitProgram(userDateInput);
+                checkExitCondition(userDateInput);
+
+
                 DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDate userDate = LocalDate.parse(userDateInput,dateFormatter);
                 LocalTime time = LocalTime.now();
 
-                IO.println("");
+                IO.println("---------------------");
                 IO.print("Enter Description: ");
                 String userDescription = UI.getUserInput();
-                exitProgram(userDescription);
-                IO.println("");
+                checkExitCondition(userDescription);
+
+
+                IO.println("---------------------");
                 IO.print("Enter Vendor: ");
                 String userVendor = UI.getUserInput();
-                exitProgram(userVendor);
-                IO.println("");
+                checkExitCondition(userVendor);
+
+
+                IO.println("---------------------");
                 IO.print("Enter Amount: ");
                 String userAmount = UI.getUserInput();
-                exitProgram(userAmount);
+                checkExitCondition(userAmount);
 
                 ledger.addTransaction(PaymentType.DEPOSIT ,new Transaction(userDate,time,userDescription,userVendor,Double.parseDouble(userAmount)));
-
+                IO.println(MessageColor.RESET);
                 IO.println(MessageColor.BLACK_BG + "Deposit Entered" + MessageColor.RESET);
+
+
+                IO.println("Press Enter To Enter New Deposit or exit to quit");
+                String exitInput = UI.getUserInput();
+                checkExitCondition(exitInput);
+
             } catch (Exception e) {
                 IO.println(MessageColor.BLACK_BG+ MessageColor.RED +"Error your deposit was not added"+ MessageColor.RESET);
             }
         }
 
     }
-    private static void exitProgram(String exitCondition){
+    private static void checkExitCondition(String exitCondition){
         if (exitCondition.equalsIgnoreCase("exit")){
             isLooping = false;
         }
