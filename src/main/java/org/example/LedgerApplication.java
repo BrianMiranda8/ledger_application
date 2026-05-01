@@ -12,7 +12,6 @@ import java.time.LocalTime;
 
 public class LedgerApplication {
     static void main() {
-
         HomeView.view();
     }
 }

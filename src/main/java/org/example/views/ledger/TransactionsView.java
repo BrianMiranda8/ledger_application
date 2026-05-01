@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class TransactionsView {
-    private static int TransactionsPage = 0;
+    private static final int TransactionsPage = 0;
 
     public static void viewAll(Ledger ledger) {
         List<Transaction> transactions = ledger.viewTransactions();

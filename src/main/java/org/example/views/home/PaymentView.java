@@ -53,7 +53,7 @@ public class PaymentView {
                 IO.println(MessageColor.RESET);
                 IO.println(MessageColor.BLACK_BG + "Deposit Entered" + MessageColor.RESET);
 
-                IO.println("Enter To Enter New Deposit or exit to quit");
+                IO.println("Press Enter To Enter New Deposit or exit to quit");
                 String exitInput = UI.getUserInput();
                 checkExitCondition(exitInput);
 

@@ -1,6 +1,7 @@
 # Accounting Ledger Application
 
-A command-line financial tracking application designed to help users record deposits, log payments, and view transaction history. The application features a comprehensive reporting system to filter transactions by date ranges and vendor names, with all records persistently stored in a local CSV file.
+A command-line financial tracking application designed to help users record deposits, log payments, and view transaction history. 
+The application features a comprehensive reporting system to filter transactions by date ranges and vendor names, with all records persistently stored in a local CSV file.
 
 ---
 
@@ -15,7 +16,7 @@ Add Deposit (D):** Prompts the user for deposit details and saves the record.
 - Exit (X): Safely terminates the application.
 
 ### Ledger Viewer
-The ledger automatically sorts all entries chronologically, displaying the **newest entries first**.
+The ledger automatically sorts all entries chronologically, displaying the newest entries first.
  All (A): Displays the complete transaction history.
  Deposits (D):  Filters the view to show only account deposits (positive entries).
  Payments (P): Filters the view to show only account payments/debits (negative entries).
@@ -36,8 +37,7 @@ Pre-defined and custom filters for targeted financial analysis:
 1.  Compile and run the main application file via your terminal or IDE.
 2.  Ensure a `data` directory exists in the project root containing the `transactions.csv` file (or allow the program to generate it upon the first entry).
 3.  Navigate the menus by typing the corresponding letter or number indicated in the prompts and pressing `Enter`.
-4.  When entering dates, ensure they follow the standard `YYYY-MM-DD` format unless otherwise prompted by the application.
+4.  When entering dates, ensure they follow the standard `YYYY-MM-DD` format.
 
 ---
 
-Author: Omar Miranda Montiel

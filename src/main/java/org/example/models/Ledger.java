@@ -15,29 +15,27 @@ public class Ledger {
     TransactionsRepository repository;
 
     public Ledger(TransactionsRepository repository) {
-
         this.repository = repository;
     }
 
     public List<Transaction> monthToDate() {
-        // month to date transactions
 
         LocalDate today = LocalDate.now();
         LocalDate firstOfMonth = LocalDate.now().withDayOfMonth(1);
 
        return    searchByDate(firstOfMonth, today);
-
     }
 
     public List<Transaction> previousMonth() {
+
         LocalDate startOfMonth = LocalDate.now().minusMonths(1).withDayOfMonth(1);
         LocalDate endOfMonth = LocalDate.now().minusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
+
         return   searchByDate(startOfMonth, endOfMonth);
-
-
     }
 
     public List<Transaction> yearToDate() {
+
         LocalDate startDate = LocalDate.now().with(TemporalAdjusters.firstDayOfYear());
         LocalDate endDate = LocalDate.now();
 
@@ -45,14 +43,15 @@ public class Ledger {
     }
 
     public List<Transaction> previousYear() {
+
         LocalDate startDate = LocalDate.now().minusYears(1).with(TemporalAdjusters.firstDayOfYear());
         LocalDate endDate = LocalDate.now().minusYears(1).with(TemporalAdjusters.lastDayOfYear());
 
         return  searchByDate(startDate, endDate);
-
     }
 
     public ArrayList<Transaction> byVendor(String search) {
+
         ArrayList<Transaction> transactions = new ArrayList<>();
 
         for (Transaction transaction : this.repository.viewTransactions()) {
@@ -72,18 +71,17 @@ public class Ledger {
      */
     public List<Transaction> searchByDate(LocalDate startDate, LocalDate endDate) {
 
-
         ArrayList<Transaction> mtdTransactions = new ArrayList<>();
 
-
         for (Transaction transaction : this.repository.viewTransactions()) {
-            // this is so we get today and the first of the month
+            // this is so we get the current day and the first of the month
             // as long as the date is NOT before the first of the month
             // AND the date is not after today
             if (!transaction.getDate().isBefore(startDate) && !transaction.getDate().isAfter(endDate)) {
                 mtdTransactions.add(transaction);
             }
         }
+
 
         return mtdTransactions.stream()
                 .sorted(Comparator.comparing(Transaction::getDate).reversed())
@@ -121,13 +119,14 @@ public class Ledger {
         // im comparing the transactions on their date i then flip the sort to be from highest to lowest
         Stream<Transaction > sorted = stream.sorted(Comparator.comparing(Transaction::getDate).reversed());
 
+        // turn stream back into a list using the collect terminal operation
         return   sorted.collect(Collectors.toList());
     }
 
 
-    // todo: not working shows all payments
+
     public List<Transaction> viewDeposits(){
-        return   this.viewTransactions().stream()
+        return  this.viewTransactions().stream()
                 .filter((t) -> t.getAmount() >= 0)
                 .toList();
     }

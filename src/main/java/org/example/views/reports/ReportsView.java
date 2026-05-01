@@ -34,7 +34,7 @@ public class ReportsView {
                     UI.displayFormattedTable(ledger.previousYear());
                 }
                 case "5" ->{
-                    SearchByVenderView.view(ledger);
+                    SearchByVendorView.view(ledger);
                 }
                 case "6"->{
                     CustomSearchView.view(ledger);

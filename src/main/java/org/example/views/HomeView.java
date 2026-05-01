@@ -15,6 +15,7 @@ public class HomeView {
 
         while (isLooping) {
             IO.println(MessageColor.PURPLE);
+
             System.out.println("  _               _      ");
             System.out.println(" | |             | |                     ");
             System.out.println(" | |     ___   __| | __ _  ___ _ __     ");
@@ -23,6 +24,7 @@ public class HomeView {
             System.out.println(" |______\\___| \\__,_|\\__, |\\___|_|     ");
             System.out.println("                     __/ |     ");
             System.out.println("                    |___/      ");
+
             IO.println(MessageColor.RESET);
             IO.println(MessageColor.PURPLE + "D) Add Deposit" + MessageColor.RESET);
             IO.println(MessageColor.GREEN + "P) Make Payment" + MessageColor.RESET);

@@ -25,37 +25,33 @@ public class CustomSearchView {
             IO.print("Enter Start Date (yyyy-mm-dd):  ");
             String startDate = UI.getUserInput();
             if (startDate.equalsIgnoreCase("exit")){
-                isLooping = false;
                 return;
             }
             IO.print("Enter End Date  (yyyy-mm-dd):   ");
             String endDate = UI.getUserInput();
             if (endDate.equalsIgnoreCase("exit")){
-                isLooping = false;
                 return;
             }
             IO.print("Enter Description:  ");
             String description = UI.getUserInput();
             if (description.equalsIgnoreCase("exit")){
-                isLooping = false;
                 return;
             }
             IO.print("Enter Vendor:  ");
             String vendor = UI.getUserInput();
             if (vendor.equalsIgnoreCase("exit")){
-                isLooping = false;
                 return;
             }
             IO.print("Enter Amount:  ");
             String amount = UI.getUserInput();
             if (amount.equalsIgnoreCase("exit")){
-                isLooping = false;
                 return;
             }
 
             try{
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
             if (!startDate.isEmpty()) {
                 LocalDate parseStartDate = LocalDate.parse(startDate, formatter);
                 transactionSearch.setStartDate(parseStartDate);

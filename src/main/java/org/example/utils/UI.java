@@ -16,13 +16,15 @@ public class UI {
     public static void displayFormattedTable(List<Transaction> transactions) {
         int TransactionsPage = 0;
         boolean changeColor = true;
+
+        displayTableHeader();
+
         while (TransactionsPage < transactions.size()) {
 
             Transaction transaction = transactions.get(TransactionsPage);
-
             String backgroundColor = changeColor ? MessageColor.BLACK_BG : MessageColor.WHITE_BG;
-
             if (TransactionsPage != 0 && TransactionsPage % 10 == 0) {
+
                 IO.println("Press Enter To Continue OR exit to quit...");
                String userInput = UI.getUserInput();
 
@@ -30,6 +32,7 @@ public class UI {
                    TransactionsPage = transactions.size();
                    continue;
                }
+                displayTableHeader();
 
             }
 
@@ -38,6 +41,14 @@ public class UI {
             TransactionsPage++;
             changeColor = !changeColor;
         }
+    }
+
+    public static void displayTableHeader(){
+        String tableHeader =  String.format(MessageColor.BLUE  +  "%-20s %-20s %-20s %-20s %-15s" + MessageColor.RESET, "Entered Date", "Time","Description", "Vendor","Amount");
+
+        IO.println(tableHeader);
+
+
     }
 
 }

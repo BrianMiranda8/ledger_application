@@ -3,7 +3,7 @@ package org.example.views.reports;
 import org.example.models.Ledger;
 import org.example.utils.UI;
 
-public class SearchByVenderView {
+public class SearchByVendorView {
     public static void view(Ledger ledger) {
         boolean isLooping = true;
 

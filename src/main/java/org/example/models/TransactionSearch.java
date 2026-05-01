@@ -62,9 +62,8 @@ public class TransactionSearch {
     }
 
     /**
-     * Copied from Imanuel
-     * @param ledger
-     * @return
+     *
+     * Inspiration from Imanuel
      */
     public List<Transaction> search(Ledger ledger) {
         return ledger.viewTransactions()

@@ -88,6 +88,7 @@ public class Transaction {
     public String prettyString(){
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss a");
+
         return String.format("%-20s %-20s %-20s %-20s %-15.2f", this.date.format(dateFormat), this.time.format(timeFormatter), this.description,this.vendor,this.amount);
     }
 }
