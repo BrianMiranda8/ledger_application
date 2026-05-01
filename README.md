@@ -1,3 +1,5 @@
+![Main Menu Screen](assets/main_menu.png)
+
 # Accounting Ledger Application
 
 A command-line financial tracking application designed to help users record deposits, log payments, and view transaction history. 
@@ -39,5 +41,32 @@ Pre-defined and custom filters for targeted financial analysis:
 3.  Navigate the menus by typing the corresponding letter or number indicated in the prompts and pressing `Enter`.
 4.  When entering dates, ensure they follow the standard `YYYY-MM-DD` format.
 
----
 
+## Project Structure
+
+```text
+src/
+└── org/example/
+    ├── LedgerApplication.java       # Main entry point
+    ├── enums/
+    │   └── PaymentType.java         # Transaction categories
+    ├── models/
+    │   ├── Ledger.java              # Logic for managing transactions
+    │   ├── Transaction.java         # Data model for a single entry
+    │   ├── TransactionSearch.java   # Search logic/filters
+    │   └── TransactionsRepository.java # Data persistence/storage
+    ├── utils/
+    │   ├── MessageColor.java        # Terminal color constants
+    │   └── UI.java                  # Reusable scanner/input helpers
+    └── views/
+        ├── HomeView.java            # Main menu screen
+        ├── home/
+        │   ├── DepositView.java     # Logic for for viewing deposits
+        │   └── PaymentView.java     # Logic for viewing payments
+        ├── ledger/
+        │   ├── LegderView.java      # General ledger display
+        │   └── TransactionsView.java # Specific transaction lists
+        └── reports/
+            ├── CustomSearchView.java
+            ├── ReportsView.java
+            └── SearchByVendorView.java
