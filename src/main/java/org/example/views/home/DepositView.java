@@ -11,9 +11,9 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class DepositView    {
-    static boolean isLooping = true;
     public static void view(Ledger ledger) {
 
+        boolean isLooping = true;
         while(isLooping){
             try{
                 IO.println(MessageColor.PURPLE);
@@ -23,7 +23,6 @@ public class DepositView    {
                 IO.println("Enter Date Format yyyy-mm-dd");
                 IO.print("Enter Date : ");
                 String userDateInput = UI.getUserInput();
-                checkExitCondition(userDateInput);
 
 
                 DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -33,39 +32,53 @@ public class DepositView    {
                 IO.println("---------------------");
                 IO.print("Enter Description: ");
                 String userDescription = UI.getUserInput();
-                checkExitCondition(userDescription);
 
 
                 IO.println("---------------------");
                 IO.print("Enter Vendor: ");
                 String userVendor = UI.getUserInput();
-                checkExitCondition(userVendor);
 
 
                 IO.println("---------------------");
-                IO.print("Enter Amount: ");
-                String userAmount = UI.getUserInput();
-                checkExitCondition(userAmount);
 
-                ledger.addTransaction(PaymentType.DEPOSIT ,new Transaction(userDate,time,userDescription,userVendor,Double.parseDouble(userAmount)));
+                while (true)
+                {
+                    IO.print("Enter Amount: ");
+                    String userAmount = UI.getUserInput();
+
+                    try
+                    {
+                        int userAmountInt = Integer.parseInt(userAmount);
+
+                        if (userAmountInt < 0)
+                        {
+                            IO.println("Error, please enter a valid amount and try again");
+                            continue;
+                        }
+                        break;
+                    }
+
+                    catch (Exception ex)
+                    {
+                        IO.println("Error, please enter a valid amount and try again");
+                    }
+                    ledger.addTransaction(PaymentType.DEPOSIT ,new Transaction(userDate,time,userDescription,userVendor,Double.parseDouble(userAmount)));
+                }
+
+
                 IO.println(MessageColor.RESET);
                 IO.println(MessageColor.BLACK_BG + "Deposit Entered" + MessageColor.RESET);
 
 
                 IO.println("Press Enter To Enter New Deposit or exit to quit");
                 String exitInput = UI.getUserInput();
-                checkExitCondition(exitInput);
+
 
             } catch (Exception e) {
                 IO.println(MessageColor.BLACK_BG+ MessageColor.RED +"Error your deposit was not added"+ MessageColor.RESET);
             }
         }
 
-    }
-    private static void checkExitCondition(String exitCondition){
-        if (exitCondition.equalsIgnoreCase("exit")){
-            isLooping = false;
-        }
     }
 
 }
