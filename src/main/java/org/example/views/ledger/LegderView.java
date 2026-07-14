@@ -15,11 +15,11 @@ public class LegderView {
             IO.println(MessageColor.BLUE);
             IO.println("Ledger View");
             IO.println(
-                    "     A) View All Transactions \n" +
-                    "     D) View Deposits \n" +
-                    "     P) View Payments \n" +
-                    "     R) Reports \n" +
-                    "     H) Home" + MessageColor.RESET);
+                    "A) View All Transactions \n" +
+                    "D) View Deposits \n" +
+                    "P) View Payments \n" +
+                    "R) Reports \n" +
+                    "H) Home" + MessageColor.RESET);
             IO.print("Enter Selection: ");
             String userInput = UI.getUserInput().toLowerCase();
             switch (userInput) {

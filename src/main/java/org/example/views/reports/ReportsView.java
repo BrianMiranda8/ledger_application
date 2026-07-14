@@ -11,13 +11,13 @@ public class ReportsView {
         while (isLooping){
             IO.println(MessageColor.GREEN + "View Reports");
             IO.println(
-                    "   1) Month To Date \n" +
-                    "   2) Previous Month \n" +
-                    "   3) Year To Date \n" +
-                    "   4) Previous Year \n " +
-                    "  5) Search By Vendor \n" +
-                    "   6) Custom Search \n" +
-                    "   0) Back" );
+                    "1) Month To Date \n" +
+                    "2) Previous Month \n" +
+                    "3) Year To Date \n" +
+                    "4) Previous Year \n" +
+                    "5) Search By Vendor \n" +
+                    "6) Custom Search \n" +
+                    "0) Back" );
             IO.print("Enter Selection:  " + MessageColor.RESET);
           String userInput =   UI.getUserInput();
             switch (userInput){
