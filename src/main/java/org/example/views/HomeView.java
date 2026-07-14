@@ -26,19 +26,19 @@ public class HomeView {
             System.out.println("                    |___/      ");
 
             IO.println(MessageColor.RESET);
-            IO.println(MessageColor.PURPLE + "D) Add Deposit" + MessageColor.RESET);
-            IO.println(MessageColor.GREEN + "P) Make Payment" + MessageColor.RESET);
-            IO.println(MessageColor.BLUE + "L) View Ledger" + MessageColor.RESET);
-            IO.println(MessageColor.RED + "X) Exit" + MessageColor.RESET);
+            IO.println(MessageColor.PURPLE + "[1] Add Deposit" + MessageColor.RESET);
+            IO.println(MessageColor.GREEN + "[2] Make Payment" + MessageColor.RESET);
+            IO.println(MessageColor.BLUE + "[3] View Ledger" + MessageColor.RESET);
+            IO.println(MessageColor.RED + "[0] Exit" + MessageColor.RESET);
             IO.print("Make Selection: ");
 
             String userInput = UI.getUserInput().toLowerCase();
             IO.println();
             switch (userInput){
-                case "d" -> DepositView.view(ledger);
-                case "p" -> PaymentView.view(ledger);
-                case "l" -> LegderView.view(ledger);
-                case "x"-> exitProgram();
+                case "1" -> DepositView.view(ledger);
+                case "2" -> PaymentView.view(ledger);
+                case "3" -> LegderView.view(ledger);
+                case "0"-> exitProgram();
             }
         }
 

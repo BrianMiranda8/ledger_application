@@ -44,6 +44,7 @@ public class UI {
     }
 
     public static void displayTableHeader(){
+        IO.println();
         String tableHeader =  String.format(MessageColor.BLUE  +  "%-20s %-20s %-20s %-20s %-15s" + MessageColor.RESET, "Entered Date", "Time","Description", "Vendor","Amount");
 
         IO.println(tableHeader);

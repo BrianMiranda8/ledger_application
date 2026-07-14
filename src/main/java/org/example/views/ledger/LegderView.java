@@ -15,24 +15,24 @@ public class LegderView {
             IO.println(MessageColor.BLUE);
             IO.println("Ledger View");
             IO.println(
-                    "A) View All Transactions \n" +
-                    "D) View Deposits \n" +
-                    "P) View Payments \n" +
-                    "R) Reports \n" +
-                    "H) Home" + MessageColor.RESET);
+                    "[1] View All Transactions \n" +
+                    "[2] View Deposits \n" +
+                    "[3] View Payments \n" +
+                    "[4] Reports \n" +
+                    "[0] Home" + MessageColor.RESET);
             IO.print("Enter Selection: ");
             String userInput = UI.getUserInput().toLowerCase();
             switch (userInput) {
-                case "a":
+                case "1":
                     TransactionsView.viewAll(ledger);
                     break;
-                case "d":
+                case "2":
                     TransactionsView.viewDeposits(ledger);
                     break;
-                case "p":
+                case "3":
                     TransactionsView.viewPayments(ledger);
                     break;
-                case "r":
+                case "4":
                     ReportsView.view(ledger);
                     break;
                 default:
