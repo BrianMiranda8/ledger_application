@@ -24,6 +24,11 @@ public class DepositView    {
                 IO.print("Enter Date : ");
                 String userDateInput = UI.getUserInput();
 
+                if(userDateInput.equalsIgnoreCase("exit"))
+                {
+                    isLooping = false;
+                    continue;
+                }
 
                 DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDate userDate = LocalDate.parse(userDateInput,dateFormatter);
@@ -33,11 +38,21 @@ public class DepositView    {
                 IO.print("Enter Description: ");
                 String userDescription = UI.getUserInput();
 
+                if(userDescription.equalsIgnoreCase("exit"))
+                {
+                    isLooping = false;
+                    continue;
+                }
 
                 IO.println("---------------------");
                 IO.print("Enter Vendor: ");
                 String userVendor = UI.getUserInput();
 
+                if(userVendor.equalsIgnoreCase("exit"))
+                {
+                    isLooping = false;
+                    continue;
+                }
 
                 IO.println("---------------------");
 
@@ -48,7 +63,13 @@ public class DepositView    {
 
                     try
                     {
-                        int userAmountInt = Integer.parseInt(userAmount);
+                        if(userAmount.equalsIgnoreCase("exit"))
+                        {
+                            isLooping = false;
+                            continue;
+                        }
+
+                        double userAmountInt = Double.parseDouble(userAmount);
 
                         if (userAmountInt < 0)
                         {
@@ -63,6 +84,8 @@ public class DepositView    {
                         IO.println("Error, please enter a valid amount and try again");
                     }
                     ledger.addTransaction(PaymentType.DEPOSIT ,new Transaction(userDate,time,userDescription,userVendor,Double.parseDouble(userAmount)));
+
+
                 }
 
 
@@ -72,6 +95,12 @@ public class DepositView    {
 
                 IO.println("Press Enter To Enter New Deposit or exit to quit");
                 String exitInput = UI.getUserInput();
+
+                if(exitInput.equalsIgnoreCase("exit"))
+                {
+                    isLooping = false;
+                    continue;
+                }
 
 
             } catch (Exception e) {

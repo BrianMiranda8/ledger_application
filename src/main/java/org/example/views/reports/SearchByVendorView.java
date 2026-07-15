@@ -8,10 +8,11 @@ public class SearchByVendorView {
         boolean isLooping = true;
 
         while (isLooping){
-            IO.print("       Enter Vendor: ");
+            IO.print("Enter Vendor: ");
             String userInput = UI.getUserInput();
             if (userInput.contains("exit")){
                 isLooping = false;
+                continue;
             }
 //            ledger.byVendor(userInput).forEach(t -> IO.println(t.prettyString()));
 

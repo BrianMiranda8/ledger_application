@@ -11,12 +11,11 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class PaymentView {
-    static boolean isLooping = true;
 
     public static void view(Ledger ledger) {
 
 //        Ledger ledger = new Ledger(new TransactionsRepository());
-
+        boolean isLooping = true;
         while(isLooping){
             try{
                 IO.println(MessageColor.GREEN);
@@ -28,26 +27,48 @@ public class PaymentView {
                 IO.println("Enter Date Format yyyy-mm-dd");
                 IO.print("Enter Date : ");
                 String userInputDate = UI.getUserInput();
-                checkExitCondition(userInputDate);
+
+                if(userInputDate.equalsIgnoreCase("exit"))
+                {
+                    isLooping = false;
+                    continue;
+                }
 
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDate userDate = LocalDate.parse(userInputDate,dateTimeFormatter);
                 LocalTime time = LocalTime.now();
+
                 IO.println("---------------------");
 
                 IO.print("Enter Description: ");
                 String userDescription = UI.getUserInput();
-                checkExitCondition(userDescription);
+
+                if(userDescription.equalsIgnoreCase("exit"))
+                {
+                    isLooping = false;
+                    continue;
+                }
+
                 IO.println("---------------------");
 
                 IO.print("Enter Vendor: ");
                 String userVendor = UI.getUserInput();
-                checkExitCondition(userVendor);
+                if(userVendor.equalsIgnoreCase("exit"))
+                {
+                    isLooping = false;
+                    continue;
+                }
+
 
                 IO.println("---------------------");
                 IO.print("Enter Amount: ");
                 String userAmount = UI.getUserInput();
-                checkExitCondition(userAmount);
+                if(userAmount.equalsIgnoreCase("exit"))
+                {
+                    isLooping = false;
+                    continue;
+                }
+
 
                 ledger.addTransaction(PaymentType.PAYMENT, new Transaction(userDate,time,userDescription,userVendor,Double.parseDouble(userAmount)));
                 IO.println(MessageColor.RESET);
@@ -55,20 +76,18 @@ public class PaymentView {
 
                 IO.println("Press Enter To Enter New Deposit or exit to quit");
                 String exitInput = UI.getUserInput();
-                checkExitCondition(exitInput);
+                if(exitInput.equalsIgnoreCase("exit"))
+                {
+                    isLooping = false;
+                    continue;
+                }
+
 
             } catch (Exception e) {
                 IO.println(MessageColor.BLACK_BG+ MessageColor.RED +"Error your deposit was not added"+ MessageColor.RESET);
             }
         }
 
-    }
-
-    private static void checkExitCondition(String exitCondition){
-        if (exitCondition.equalsIgnoreCase("exit")){
-            isLooping = false;
-
-        }
     }
 
 }
